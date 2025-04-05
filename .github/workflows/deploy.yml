@@ -32,6 +32,8 @@ jobs:
             cd virtual-iot-dashboard
             expect -c 'spawn git pull; expect "Enter passphrase for key"; send "${{secrets.PASSPHRASE}}\r"; expect eof'
             bun install
+            bun run build
+            pm2 restart 4
             echo "Deployed successfully"
             exit
             echo ls
